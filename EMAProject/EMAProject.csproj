@@ -3,25 +3,35 @@
 		<TargetFramework>net5.0</TargetFramework>
 	</PropertyGroup>
 	<ItemGroup>
-		<Folder Include="Areas\Admin\Controllers\"/>
-		<Folder Include="Areas\Admin\Views\"/>
-		<Folder Include="Controllers\"/>
-		<Folder Include="Domain\"/>
-		<Folder Include="Models\ViewComponents\"/>
-		<Folder Include="Service\"/>
-		<Folder Include="wwwroot\css\"/>
-		<Folder Include="wwwroot\images\"/>
-		<Folder Include="wwwroot\js\"/>
-		<Folder Include="wwwroot\sass\"/>
+	  <Content Remove="bundleconfig.json" />
+	  <Content Remove="compilerconfig.json" />
 	</ItemGroup>
 	<ItemGroup>
-		<PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.2"/>
-		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="6.0.0"/>
-		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.3"/>
-		<PackageReference Include="MongoDB.Driver" Version="2.14.1"/>
-		<PackageReference Include="MongoDB.Driver.Core" Version="2.14.1"/>
-		<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.3"/>
-		<PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.3"/>
-		<PackageReference Include="xunit" Version="2.4.1"/>
+	  <None Remove="Views\Index.html" />
+	</ItemGroup>
+	<ItemGroup>
+		<Folder Include="Areas\Admin\Controllers\" />
+		<Folder Include="Areas\Admin\Views\" />
+		<Folder Include="Domain\" />
+		<Folder Include="Models\ViewComponents\" />
+		<Folder Include="Service\" />
+		<Folder Include="Views\Home\" />
+		<Folder Include="wwwroot\css\" />
+		<Folder Include="wwwroot\images\" />
+		<Folder Include="wwwroot\js\" />
+		<Folder Include="wwwroot\sass\" />
+	</ItemGroup>
+	<ItemGroup>
+	  <None Include="bundleconfig.json" />
+	  <None Include="compilerconfig.json" />
+	  <None Include="Views\Shared\Index.cshtml" />
+	</ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="5.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="5.0.0" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.0" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.0" />
+		<PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="5.0.0" />
+		<PackageReference Include="xunit" Version="2.4.1" />
 	</ItemGroup>
 </Project>
