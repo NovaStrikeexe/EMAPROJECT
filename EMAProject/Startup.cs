@@ -19,6 +19,9 @@ namespace EMAProject
             .AddControllersWithViews()
             .SetCompatibilityVersion(Microsoft.AspNetCore.Mvc.CompatibilityVersion.Latest)
             .AddSessionStateTempDataProvider();
+
+            //services.Configure<DataBaseSettings>(Configuration.GetSection(nameof(DataBaseSettings)));
+            //services.AddSingleton<DataBaseSettings>(sp => sp.GetRequiredService<IOptions<DataBaseSettings>>().Value);
         }
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
