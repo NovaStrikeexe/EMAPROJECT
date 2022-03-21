@@ -21,6 +21,10 @@ namespace EMAProject.Domain.Entities
         [Display(Name = "Text(Description)")]
         public virtual string Text { get; set; }
         
+        [Display(Name = "FloatNumber(Price)")]
+        public virtual string Price { get; set; }
+
+        
         [Display(Name = "Title image")]
         public virtual string TitleImagePath { get; set; }
         

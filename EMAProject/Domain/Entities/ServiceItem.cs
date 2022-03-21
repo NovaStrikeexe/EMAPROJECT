@@ -8,6 +8,7 @@ namespace EMAProject.Domain.Entities
 {
     public class ServiceItem:EntitiesBase
     {
+        
         [Required(ErrorMessage ="Enter name of Service Item")]
         [Display(Name ="Name of Service Item")]
         public override string Title { get; set; }
@@ -17,6 +18,10 @@ namespace EMAProject.Domain.Entities
 
         [Display(Name = "Description of the service")]
         public override string Text { get; set; }
+
+        
+        [Display(Name = "Price of the service")]
+        public override string Price { get; set; }
 
     }
 }
