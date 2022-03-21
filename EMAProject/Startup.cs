@@ -30,9 +30,12 @@ namespace EMAProject
             services.AddTransient<ITextFieldsRepository,EFTextFieldsRepository>();
             services.AddTransient<IServiceItemRepository, EFServiceItemsRepository>();
             services.AddTransient<DataManager>();
-            //services.AddControllersWithViews().SetCompatibilityVersion(Microsoft.AspNetCore.Mvc.CompatibilityVersion.Latest).AddSessionStateTempDataProvider();
-            //services.AddDbContext<AppDbContext>(x => x.UseNoSqlServer)
-            //TODO Подрубить базу к прилажухе
+
+            services.Configure<SetttigsDB>(options =>
+            {
+                options.ConnectionString = Configuration.GetSection("MongoConnection:ConnectionString").Value;
+                options.Database = Configuration.GetSection("MongoConnection:Database").Value;
+        });
             services.AddIdentity<IdentityUser,IdentityRole>(opts =>{
                 opts.User.RequireUniqueEmail = true;
                 opts.Password.RequiredLength = 14;
@@ -40,6 +43,7 @@ namespace EMAProject
                 opts.Password.RequireLowercase = false;
                 opts.Password.RequireUppercase = false;
                 opts.Password.RequireDigit = false;
+                
             }).AddEntityFrameworkStores<AppDbContext>().AddDefaultTokenProviders();
 
             services.ConfigureApplicationCookie(options =>{
@@ -53,7 +57,12 @@ namespace EMAProject
             {
                 x.AddPolicy("AdminArea", policy => { policy.RequireRole("admin"); });
             });
-             services.AddControllersWithViews().SetCompatibilityVersion(CompatibilityVersion.Latest).AddSessionStateTempDataProvider();
+             
+             services
+            .AddControllersWithViews()
+            .SetCompatibilityVersion(CompatibilityVersion.Latest)
+            .AddSessionStateTempDataProvider();
+            services.AddMemoryCache();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
