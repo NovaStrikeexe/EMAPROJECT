@@ -3,6 +3,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Collections.Generic;
 using EMAProject.Domain.Entities;
+using Microsoft.Extensions.Caching.Memory;
 using EMAProject.Domain.Repositories.Abstract;
 using Microsoft.EntityFrameworkCore;
 
@@ -11,7 +12,9 @@ namespace EMAProject.Domain.Repositories.EntityFramework
     public class EFServiceItemsRepository:IServiceItemRepository
     {
         private readonly AppDbContext context;
-
+        private readonly IMemoryCache _memoryCache;
+        public EFServiceItemsRepository(IMemoryCache memoryCache)
+        { }
         public EFServiceItemsRepository(AppDbContext context)
         {
             this.context = context;
