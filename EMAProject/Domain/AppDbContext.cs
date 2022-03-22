@@ -44,19 +44,19 @@ namespace EMAProject.Domain
 
             builder.Entity<TextField>().HasData(new TextField
             {
-                Id = new Guid("F80BC210-BF07-4C29-B412-DA35CB2B3FDB"),
+                Id = "F80BC210-BF07-4C29-B412-DA35CB2B3FDB",
                 CodeWord = "PageIndex",
                 Title = "MainPage"
             });
             builder.Entity<TextField>().HasData(new TextField
             {
-                Id = new Guid("B8BC4020-B3FD-4928-B83D-F6E41616F657"),
+                Id = "B8BC4020-B3FD-4928-B83D-F6E41616F657",
                 CodeWord = "PageServices",
                 Title = "OurServices"
             });
             builder.Entity<TextField>().HasData(new TextField
             {
-                Id = new Guid("E8E1F1B0-BEA1-4228-B7EA-40A979A2F4DA"),
+                Id = "E8E1F1B0-BEA1-4228-B7EA-40A979A2F4DA",
                 CodeWord = "PageContatcs",
                 Title = "Contactcs"
             });

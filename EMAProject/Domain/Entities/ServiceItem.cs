@@ -3,24 +3,30 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
+using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
 
 namespace EMAProject.Domain.Entities
 {
     public class ServiceItem:EntitiesBase
     {
         
-        [Required(ErrorMessage ="Enter name of Service Item")]
-        [Display(Name ="Name of Service Item")]
+        [BsonRequired]
+        [BsonId]
+        [BsonRepresentation(BsonType.ObjectId)]
+        public string? Id { get; set; }
+        [BsonRequired]
+        [BsonElement("Name")]
         public override string Title { get; set; }
 
-        [Display(Name = "Brief description of the service")]
+        [BsonElement("Brief description")]
         public override string SubTitle { get; set; }
 
-        [Display(Name = "Description of the service")]
+        [BsonElement("Description")]
         public override string Text { get; set; }
 
         
-        [Display(Name = "Price of the service")]
+        [BsonElement("Price")]
         public override string Price { get; set; }
 
     }

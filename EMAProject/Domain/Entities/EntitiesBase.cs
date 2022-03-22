@@ -3,32 +3,36 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
+using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
 
 namespace EMAProject.Domain.Entities
 {
     public abstract class EntitiesBase
     {
         protected EntitiesBase() => DateAdded = DataType.DateTime;
-        [Required]
-        public Guid Id { get; set; }
+        [BsonRequired]
+        [BsonId]
+        [BsonRepresentation(BsonType.ObjectId)]
+        public string? Id { get; set; }
 
-        [Display(Name = "Title")]
+        [BsonElement("Title")]
         public virtual string Title { get; set; }
 
-        [Display(Name = "SubTitle")]
+        [BsonElement( "SubTitle")]
         public virtual string SubTitle { get; set; }
         
-        [Display(Name = "Text(Description)")]
+        [BsonElement( "Text(Description)")]
         public virtual string Text { get; set; }
         
-        [Display(Name = "FloatNumber(Price)")]
+        [BsonElement( "FloatNumber(Price)")]
         public virtual string Price { get; set; }
 
         
-        [Display(Name = "Title image")]
+        [BsonElement( "Title image")]
         public virtual string TitleImagePath { get; set; }
         
-        [DataType(DataType.DateTime)]
+        [BsonElement("DateAdded")]
         public DataType DateAdded { get; set; }
     }
 }

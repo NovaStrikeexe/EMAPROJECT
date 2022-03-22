@@ -19,7 +19,7 @@ namespace EMAProject.Domain.Repositories.EntityFramework
         {
             return context.TextFields;
         }
-        public TextField GetTextFieldById(Guid id)
+        public TextField GetTextFieldById(string id)
         {
             return context.TextFields.FirstOrDefault(x=> x.Id == id);
         }
@@ -39,7 +39,7 @@ namespace EMAProject.Domain.Repositories.EntityFramework
                 context.SaveChanges(); 
             }
         }
-        public void DeleteTextField(Guid id)
+        public void DeleteTextField(string id)
         {
             context.TextFields.Remove(new TextField (){Id = id});
             context.SaveChanges();

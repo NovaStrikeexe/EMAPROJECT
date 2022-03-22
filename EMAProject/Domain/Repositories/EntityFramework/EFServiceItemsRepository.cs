@@ -23,7 +23,7 @@ namespace EMAProject.Domain.Repositories.EntityFramework
         {
             return context.ServiceItems;
         }
-        public ServiceItem GetServiceItemById(Guid id)
+        public ServiceItem GetServiceItemById(string id)
         {
             return context.ServiceItems.FirstOrDefault(x=> x.Id == id);
         }
@@ -39,7 +39,7 @@ namespace EMAProject.Domain.Repositories.EntityFramework
                 context.SaveChanges(); 
             }
         }
-        public void DeleteServiceItem(Guid id)
+        public void DeleteServiceItem(string id)
         {
             context.ServiceItems.Remove(new ServiceItem (){Id = id});
             context.SaveChanges();

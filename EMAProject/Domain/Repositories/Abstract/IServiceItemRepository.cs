@@ -8,9 +8,9 @@ namespace EMAProject.Domain.Repositories.Abstract
     public interface IServiceItemRepository
     {
          IQueryable<ServiceItem>GetServiceItems();
-         ServiceItem GetServiceItemById(Guid id);
+         ServiceItem GetServiceItemById(string id);
          void SaveServiceItem(ServiceItem entity);
-         void DeleteServiceItem(Guid id);
+         void DeleteServiceItem(string id);
     }
 
 }
