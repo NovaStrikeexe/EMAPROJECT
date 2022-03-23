@@ -14,7 +14,7 @@ namespace EMAProject.Domain.Entities
         [BsonRequired]
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
-        public string? Id { get; set; }
+        public string Id { get; set; }
 
         [BsonElement("Title")]
         public virtual string Title { get; set; }
