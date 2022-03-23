@@ -5,6 +5,9 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Options;
+using EMAProject.Domain.Entities;
+using EMAProject.Domain.Repositories.Abstract;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,7 +22,10 @@ namespace EMAProject
         public Startup(IConfiguration configuration) => Configuration = configuration;
         public void ConfigureServices(IServiceCollection services)
         {
+            // requires using Microsoft.Extensions.Options
             Configuration.Bind("Project", new ConfigureService());
+            services.Configure<SettingsDB>(Configuration.GetSection(nameof(SettingsDB)));
+            services.AddSingleton<ISettingsDB>(sp =>sp.GetRequiredService<IOptions<SettingsDB>>().Value);
             services
             .AddControllersWithViews()
             .SetCompatibilityVersion(Microsoft.AspNetCore.Mvc.CompatibilityVersion.Latest)
