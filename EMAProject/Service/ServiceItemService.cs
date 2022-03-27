@@ -18,6 +18,9 @@ namespace EMAProject.Service
             _serviceItems = dBase.GetCollection<ServiceItem>(settingsDB.ServiceItemCollection);
         }
 
+        /*
+        *TODO ТУТ НУЖНО СДЕЛАТЬ ОБРАБОТКУ ОШИБОК 
+        */
         public List<ServiceItem> Get() => 
         _serviceItems.Find(serviceItem => true).ToList();
 
@@ -28,6 +31,15 @@ namespace EMAProject.Service
             _serviceItems.InsertOne(serviceItem);
             return serviceItem;
         }
+
+        public void Update(string id, ServiceItem serviceItemIn)=> 
+        _serviceItems.ReplaceOne(serviceItem=> serviceItem.Id == id, serviceItemIn);
+
+         public void Remove(string id)=> 
+        _serviceItems.DeleteOne(serviceItem=> serviceItem.Id == id);
+        public void Remove(ServiceItem serviceItemIn)=> 
+        _serviceItems.DeleteOne(serviceItem=> serviceItem.Id == serviceItemIn.Id);
+        
         
     }
 }
