@@ -11,10 +11,10 @@ namespace EMAProject.Domain.Entities
     public class ServiceItem:EntitiesBase
     {
         
-        [BsonRequired]
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
         public string Id { get; set; }
+
         [BsonRequired]
         [BsonElement("Name")]
         public override string Title { get; set; }

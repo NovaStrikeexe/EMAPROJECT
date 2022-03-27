@@ -10,7 +10,6 @@ namespace EMAProject.Domain.Entities
 {
     public abstract class EntitiesBase
     {
-        protected EntitiesBase() => DateAdded = DataType.DateTime;
         [BsonRequired]
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
@@ -33,6 +32,6 @@ namespace EMAProject.Domain.Entities
         public virtual string TitleImagePath { get; set; }
         
         [BsonElement("DateAdded")]
-        public DataType DateAdded { get; set; }
+        public DateTime DateAdded { get; set; }
     }
 }
