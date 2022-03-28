@@ -26,6 +26,8 @@ namespace EMAProject
             Configuration.Bind("Project", new ConfigureService());
             services.Configure<SettingsDB>(Configuration.GetSection(nameof(SettingsDB)));
             services.AddSingleton<ISettingsDB>(sp =>sp.GetRequiredService<IOptions<SettingsDB>>().Value);
+            services.AddSingleton<ServiceItemService>();
+            services.AddSingleton<TextFieldService>();
             services
             .AddControllersWithViews()
             .SetCompatibilityVersion(Microsoft.AspNetCore.Mvc.CompatibilityVersion.Latest)
