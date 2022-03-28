@@ -3,17 +3,19 @@ using System.Linq;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using EMAProject.Domain.Repositories.Abstract;
+
+using EMAProject.Service;
 namespace EMAProject.Domain
 {
     public class DataManager
     {
-        public ITextFieldsRepository TextFields{get;set;}
-        public IServiceItemRepository ServiceItems{ get; set;}
+        public TextFieldService TextFields{get;set;}
+        public ServiceItemService ServiceItems{ get; set;}
 
-        public DataManager(ITextFieldsRepository textFieldsRepository, IServiceItemRepository serviceItemRepository)
+        public DataManager(TextFieldService textFieldsService, ServiceItemService serviceItemService)
         {
-            TextFields = textFieldsRepository;
-            ServiceItems = serviceItemRepository;
+            TextFields = textFieldsService;
+            ServiceItems = serviceItemService;
         }
     }
 }
