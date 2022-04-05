@@ -5,10 +5,13 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Options;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+
 using EMAProject.Domain;
 using EMAProject.Service;
 using EMAProject.Domain.Entities;
 using EMAProject.Domain.Repositories.Abstract;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,6 +33,8 @@ namespace EMAProject
             services.AddTransient<ServiceItemService>();
             services.AddTransient<TextFieldService>();
             services.AddTransient<DataManager>();
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+            .AddJwtBearer(JwtBearerDefaults.AuthenticationScheme, options => Configuration.Bind("JwtSettings", options));
             services.Configure<IdentityOptions>(options =>{
                     options.Password.RequireDigit = true;
                     options.Password.RequireLowercase = true;
@@ -63,7 +68,10 @@ namespace EMAProject
             
 
             services
-            .AddControllersWithViews()
+            .AddControllersWithViews(x=>
+            {
+                x.Conventions.Add(new AdminAreaAuthorization("Admin","AdminArea"));
+            })
             .SetCompatibilityVersion(Microsoft.AspNetCore.Mvc.CompatibilityVersion.Latest)
             .AddSessionStateTempDataProvider();
         }
